@@ -1,6 +1,7 @@
 import requests 
 from bs4 import BeautifulSoup
 import pandas as pd
+from datetime import date 
 
 url = 'https://www.homebase.co.uk/search/products?q=concrete&redirectFrom=Any'
 
@@ -34,5 +35,11 @@ df = pd.DataFrame(list(zip(names, prices)),
     columns =['names','prices'])
 df
 
+today = date.today()
+d4 = today.strftime("%b-%d-%Y")
+print(d4)
+
+
 #converts dataframe to excel 
-df.to_excel("ScrapedData.xlsx")
+df.to_excel(d4+"_Data.xlsx")
+
